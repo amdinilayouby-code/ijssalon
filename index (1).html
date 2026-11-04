@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="IJssalon Avantenaren: ambachtelijk ijs, elke dag vers gemaakt.">
+<title>IJssalon Avantenaren</title>
+<style>
+  :root {
+    --roze: #ff6b8b;
+    --mint: #3fbf9f;
+    --geel: #ffd166;
+    --donker: #2b2d42;
+    --licht: #fff9f4;
+    --wit: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--donker); background: var(--licht); line-height: 1.6; }
+  a { color: inherit; }
+  img { max-width: 100%; }
+
+  /* Navigatie */
+  header { position: sticky; top: 0; z-index: 10; background: var(--wit); box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .nav { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+  .logo { font-weight: 800; font-size: 22px; color: var(--roze); text-decoration: none; }
+  .nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+  .nav a { text-decoration: none; font-weight: 600; padding: 4px 2px; border-bottom: 2px solid transparent; }
+  .nav a:hover, .nav a:focus-visible { border-bottom-color: var(--roze); outline: none; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--roze), var(--geel) 55%, var(--mint));
+    color: var(--donker);
+    text-align: center;
+    padding: 90px 20px;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin: 0 0 12px; }
+  .hero p { font-size: 1.2rem; max-width: 620px; margin: 0 auto 28px; }
+  .knop { display: inline-block; background: var(--donker); color: var(--wit); padding: 14px 28px; border-radius: 999px; text-decoration: none; font-weight: 700; }
+  .knop:hover, .knop:focus-visible { background: #14152a; outline: 3px solid var(--geel); outline-offset: 2px; }
+  .status { display: inline-block; margin-top: 18px; background: var(--wit); padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: 15px; }
+
+  section { padding: 70px 20px; scroll-margin-top: 80px; }
+  .inhoud { max-width: 1100px; margin: 0 auto; }
+  h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); margin: 0 0 10px; }
+  .intro { color: #555; max-width: 640px; margin-bottom: 36px; }
+
+  /* Smaken */
+  .smaken { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+  .smaak { background: var(--wit); border-radius: 18px; padding: 24px; box-shadow: 0 4px 14px rgba(0,0,0,.05); }
+  .smaak .emoji { font-size: 40px; line-height: 1; }
+  .smaak h3 { margin: 12px 0 6px; font-size: 1.2rem; }
+  .smaak p { margin: 0; color: #555; font-size: 15px; }
+
+  /* Openingsuren */
+  .openingsuren { background: var(--wit); }
+  table { width: 100%; max-width: 420px; border-collapse: collapse; }
+  td { padding: 10px 4px; border-bottom: 1px solid #eee; }
+  td:last-child { text-align: right; font-weight: 600; }
+  tr.vandaag td { color: #c2185b; }
+
+  /* Over ons */
+  .over { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .blok { background: linear-gradient(160deg, var(--mint), var(--roze)); border-radius: 24px; min-height: 260px; display: flex; align-items: center; justify-content: center; font-size: 90px; }
+  @media (max-width: 760px) { .over { grid-template-columns: 1fr; } }
+
+  /* Contact */
+  .contact p { margin: 6px 0; }
+  .contact a { color: var(--roze); font-weight: 600; }
+
+  footer { background: var(--donker); color: #ddd; text-align: center; padding: 26px 20px; font-size: 14px; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 60px 16px; }
+    section { padding: 50px 16px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .smaak { transition: transform .2s ease; }
+    .smaak:hover { transform: translateY(-4px); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav" aria-label="Hoofdnavigatie">
+    <a class="logo" href="#home">IJssalon Avantenaren</a>
+    <ul>
+      <li><a href="#smaken">Smaken</a></li>
+      <li><a href="#openingsuren">Openingsuren</a></li>
+      <li><a href="#over">Over ons</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <h1>Ambachtelijk ijs,<br>elke dag vers</h1>
+    <p>Bij IJssalon Avantenaren maken we ieder ijs zelf, met lokale ingrediënten en veel liefde voor smaak.</p>
+    <a class="knop" href="#smaken">Bekijk onze smaken</a><br>
+    <span class="status" id="status" aria-live="polite"></span>
+  </div>
+
+  <section id="smaken">
+    <div class="inhoud">
+      <h2>Onze smaken</h2>
+      <p class="intro">Een greep uit ons assortiment. Elke week wisselen we een paar smaken, dus kom gerust vaker langs.</p>
+      <div class="smaken">
+        <article class="smaak"><div class="emoji" aria-hidden="true">🍓</div><h3>Aardbei</h3><p>Verse aardbeien van het seizoen, fruitig en zacht.</p></article>
+        <article class="smaak"><div class="emoji" aria-hidden="true">🍫</div><h3>Chocolade</h3><p>Donkere chocolade met een volle, romige smaak.</p></article>
+        <article class="smaak"><div class="emoji" aria-hidden="true">🥭</div><h3>Mango</h3><p>Zoet, exotisch en heerlijk verfrissend.</p></article>
+        <article class="smaak"><div class="emoji" aria-hidden="true">🍋</div><h3>Citroen</h3><p>Fris en zuur, perfect na een warme dag.</p></article>
+        <article class="smaak"><div class="emoji" aria-hidden="true">🌰</div><h3>Hazelnoot</h3><p>Geroosterde hazelnoten in een romig ijs.</p></article>
+        <article class="smaak"><div class="emoji" aria-hidden="true">🍦</div><h3>Vanille</h3><p>De klassieker, met echte vanille.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="openingsuren" class="openingsuren">
+    <div class="inhoud">
+      <h2>Openingsuren</h2>
+      <p class="intro">Let op: op feestdagen kan onze openingstijd afwijken. Volg ons dan op social media.</p>
+      <table>
+        <tr data-dag="1"><td>Maandag</td><td>Gesloten</td></tr>
+        <tr data-dag="2"><td>Dinsdag</td><td>12:00 – 22:00</td></tr>
+        <tr data-dag="3"><td>Woensdag</td><td>12:00 – 22:00</td></tr>
+        <tr data-dag="4"><td>Donderdag</td><td>12:00 – 22:00</td></tr>
+        <tr data-dag="5"><td>Vrijdag</td><td>12:00 – 23:00</td></tr>
+        <tr data-dag="6"><td>Zaterdag</td><td>12:00 – 23:00</td></tr>
+        <tr data-dag="0"><td>Zondag</td><td>12:00 – 23:00</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="over">
+    <div class="inhoud over">
+      <div>
+        <h2>Over ons</h2>
+        <p>Sinds de opening staan wij in Antwerpen klaar voor de liefhebbers van goed ijs. We werken met een eigen recept, kijken goed naar de juiste verhoudingen tussen suiker, vet en smaak, en maken alles in ons eigen atelier.</p>
+        <p>Vertel ons gerust welke smaak je het liefst hebt. Misschien staat hij volgende week op de kaart!</p>
+      </div>
+      <div class="blok" aria-hidden="true">🍨</div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="inhoud">
+      <h2>Contact</h2>
+      <p><strong>Adres:</strong> Kronenburgstraat 47, 2000 Antwerpen</p>
+      <p><strong>Telefoon:</strong> 0470 98 56 91</p>
+      <p><strong>E-mail:</strong> <a href="mailto:infoijssalonavantexample@gmail.com">infoijssalonavantexample@gmail.com</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2026 IJssalon Avantenaren. Alle rechten voorbehouden.
+</footer>
+
+<script>
+  // Toon of de ijssalon nu open is, op basis van de openingsuren in de tabel
+  const uren = {
+    0: [12, 23], 1: null, 2: [12, 22], 3: [12, 22], 4: [12, 22], 5: [12, 23], 6: [12, 23]
+  };
+  const nu = new Date();
+  const dag = nu.getDay();
+  const uur = nu.getHours() + nu.getMinutes() / 60;
+  const status = document.getElementById("status");
+  const schema = uren[dag];
+
+  if (!schema) {
+    status.textContent = "Vandaag gesloten";
+  } else if (uur >= schema[0] && uur < schema[1]) {
+    status.textContent = "Nu open tot " + schema[1] + ":00";
+  } else if (uur < schema[0]) {
+    status.textContent = "Vandaag open vanaf " + schema[0] + ":00";
+  } else {
+    status.textContent = "Nu gesloten, we zien je graag morgen";
+  }
+
+  // Markeer de rij van vandaag in de tabel
+  document.querySelectorAll("tr[data-dag]").forEach(rij => {
+    if (Number(rij.dataset.dag) === dag) rij.classList.add("vandaag");
+  });
+</script>
+</body>
+</html>
